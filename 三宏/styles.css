@@ -1,0 +1,343 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  position: relative; /* 確保 container 使用相對定位 */
+  background: url("./banner.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* head */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  width: 20%;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* 添加陰影 */
+  position: sticky; /* 讓 header 固定在左側 */
+  top: 0;
+  height: auto; /* 讓 header 高度自適應內容 */
+}
+
+.header h2 {
+  text-align: center; 
+  margin-top: 20%;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative; /* 保持相對定位以支持絕對定位的 logo */
+}
+
+.menu-icon {
+  display: none; /* 默認隱藏菜單圖標 */
+  cursor: pointer;
+  padding: 10px;
+  font-size: 24px;
+}
+
+/* 鳥頭Logo */
+.logo {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute; /* 使用絕對定位 */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  top: 50%; /* 垂直居中 */
+  left: 100%; /* 設置 logo 的位置，使其位於 header 和 main 之間 */
+  transform: translate(-50%, -30%); /* 確保 logo 水平和垂直居中 */
+  z-index: 10; /* 確保 logo 在最上層 */
+}
+
+.top,
+.bottom,
+.beak,
+.eye {
+  position: absolute; /* 鎖定logo元素内部元素位置 */
+}
+
+.top {
+  width: 52px;
+  height: 46px;
+  background-color: black;
+  border-radius: 80% 40% 50% 0% / 70% 60% 50% 0%;
+  bottom: 25px;
+  left: 25px;
+}
+
+.bottom {
+  width: 52px;
+  height: 25px;
+  background-color: white;
+  border-radius: 60% 20% 50% 0% / 85% 20% 50% 0%;
+  top: 40px;
+  left: 25px;
+}
+
+.beak {
+  width: 15px;
+  height: 8px;
+  background-color: black;
+  border-radius: 0% 90% 0% 0% / 0% 90% 00% 0%;
+  top: 42px;
+  right: 10px;
+  transform: rotate(-10deg); /* 鳥嘴巴稍微傾斜 */
+}
+
+.eye {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+  top: 45px;
+  right: 30px;
+}
+
+/* 導航列 */
+
+nav {
+  display: block; /* 默認顯示在桌面版 */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 讓導航列中的項目置中 */
+}
+
+nav ul li {
+  padding: 10px 20px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+}
+
+nav ul li:hover {
+  color: #aa6666;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* main */
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  min-height: 100vh; /* 確保 main 的最小高度為 100% 視口高度 */
+}
+
+/* intro */
+.intro {
+  flex: 1; /* 填滿剩餘空間 */
+  position: relative;
+  text-align: right;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* 將內容垂直置底 */
+  justify-content: flex-end; /* 將內容水平置右 */
+  padding: 20px; 
+  z-index: 1; /* 確保 intro 背景圖片在 logo 之下 */
+}
+
+.intro h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 3px;
+}
+
+.intro p {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0px;
+}
+
+/* details */
+.details {
+  display: flex;
+  justify-content: space-between; /* 在主軸上（水平）均勻分布子元素，子元素之間留有空隙 */
+  background: #dcccbc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 給容器添加陰影效果，使其更具立體感 */
+  min-height: 250px;
+}
+
+.details .detail {
+  display: flex;
+  flex: 1;
+  align-self: flex-start; /* 讓 h2 元素在其父容器內的交叉軸（垂直）上對齊到起始位置 */
+  padding: 30px 2%;
+}
+
+.details .detail h2 {
+  height: 80px;
+  left: 5px;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 40px;
+  align-self: flex-start; /* 讓 h2 元素在其父容器內的交叉軸（垂直）上對齊到起始位置 */
+  margin-top: 0%;
+  margin-left: 0%;
+  writing-mode: vertical-rl; /* 將文字垂直排列 */
+  position: relative; /* 設置相對定位，為偽元素定位做準備 */
+}
+
+.details .detail p {
+  margin-top: 0%;
+  left: 78.84px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Noto Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21.79px;
+  text-align: left;
+}
+
+.details .detail h2::after {
+  content: ""; /* 偽元素不需要文字內容 */
+  position: absolute;
+  top: 60px;
+  left: 25px;
+  width: 10px;
+  height: 10px;
+  border: 8px solid #aa6666;
+  border-radius: 50%;
+  opacity: 0.6; /* 設置透明度 */
+}
+
+@media (max-width: 960px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .header {
+    width: 100%;
+    align-items: center;
+    z-index: 1000;
+    justify-content: flex-start; /* 確保內容在 header 內垂直排列 */
+  }
+
+  .header-top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* 確保 menu-icon 和 header-content 在同一排 */
+    padding: 10px;
+  }
+
+  .header-content {
+    flex-grow: 1;
+    justify-content: center;
+    position: relative;
+  }
+
+  .header h2 {
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  .logo {
+    position: relative;
+    transform: none;
+    top: 0;
+    left: 0;
+    margin: 0 15px 0px 0;
+    width: 50px;
+    height: 50px;
+  }
+
+  .top {
+    width: 26px;
+    height: 23px;
+    bottom: 12.5px;
+    left: 12.5px;
+  }
+
+  .bottom {
+    width: 26px;
+    height: 12.5px;
+    top: 20px;
+    left: 12.5px;
+  }
+
+  .beak {
+    width: 7.5px;
+    height: 4px;
+    top: 21px;
+    right: 5px;
+  }
+
+  .eye {
+    width: 5px;
+    height: 5px;
+    top: 22.5px;
+    right: 15px;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  nav {
+    display: none; /* 預設隱藏 */
+    width: 100%; /* 讓導航列寬度占滿容器 */
+    background: #ffffff;
+    position: relative; /* 使用相對定位，讓其影響 header 的高度 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    box-sizing: border-box; /* 確保 padding 和 border 包含在寬度內 */
+  }
+
+  nav ul {
+    align-items: flex-start;
+  }
+
+  nav ul li {
+    width: 100%;
+    box-sizing: border-box; 
+  }
+
+  .intro {
+    text-align: right;
+    min-height: 50vh;
+    background: url("./banner.png") no-repeat center center;
+    background-size: cover;
+  }
+
+  .details {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    height: auto;
+    justify-content: center;
+  }
+
+  .details .detail {
+    padding: 50px;
+    justify-content: center;
+  }
+}

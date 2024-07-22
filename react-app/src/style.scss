@@ -1,0 +1,489 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden; /* 隱藏水平滾動條 */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  width: 100vw; /* 佔滿視窗寬度 */
+  height: 100vh; /* 佔滿視窗高度 */
+
+  .container {
+    width: 100%; /* 佔滿父容器寬度 */
+    max-width: 2000px; /* 設置最大寬度 */
+    box-sizing: border-box; /* 包括內邊距和邊框在內的寬度和高度計算 */
+    padding: 0 10px;
+    justify-content: center;
+    font-family: inter, ui-sans-serif, system-ui, sans-serif;
+
+    //Login & Register
+
+    .link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .loginpage {
+      display: flex;
+      justify-content: center; /* 水平居中 */
+      align-items: center; /* 垂直居中 */
+      height: 100vh; /* 設定 body 高度為視窗的 100% */
+      /* 設定了 body 的高度為 100vh（視窗高度的 100%），這樣 align-items: center; 
+        才能正確地在垂直方向上居中內容。如果沒有設定 height，body 的高度將會是其內容的自然高度，這樣垂直居中就不會有任何效果
+         */
+      background-image: url("./images/loginbackground.jpeg");
+      background-size: cover;
+      background-position: center;
+    }
+    .wrapper {
+      /*Login*/
+      width: 420px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(70px); /*融入後面背景半透明*/
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      color: aliceblue;
+      border-radius: 20px;
+      padding: 30px 40px;
+      background-color: rgba(137, 43, 226, 0.614);
+    }
+
+    .wrapper h1 {
+      font-size: 36px;
+      text-align: center;
+    }
+
+    .wrapper .login-box {
+      position: relative;
+      /*這表示 .login-box 元素相對於其正常位置進行定位。這裡的“相對定位”意味著login-box 元素仍保留在正常的文檔流中，
+            而且設定這個屬性後，內部的任何絕對定位元素（如 i 標籤）將以 .login-box 的邊界作為參照點。*/
+      width: 100%;
+      height: 50px;
+      margin: 30px 0;
+    }
+
+    .login-box input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 40px;
+      font-size: 16px;
+      color: #fff;
+      padding: 20px 45px 20px 20px;
+    }
+
+    .login-box input::placeholder {
+      color: #fff;
+    }
+
+    .login-box i {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+    }
+
+    .wrapper .remember-forgot {
+      display: flex;
+      justify-content: space-between; /*間距相等並且填滿容器的可用空間，同時第一個和最後一個 flex 子項貼齊容器的兩端，中間的 flex 子項之間的間距會被平均分配*/
+      font-size: 12.5px;
+      margin: -15px 0 15px;
+    }
+
+    .remember-forgot label input {
+      accent-color: #fff;
+      margin-right: 3px;
+    }
+
+    .remember-forgot a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .remember-forgot a:hover {
+      text-decoration: underline; /*滑鼠移過去底線*/
+    }
+
+    .wrapper .btn {
+      width: 100%;
+      height: 45px;
+      background: #fff;
+      border: none;
+      outline: none;
+      border-radius: 40px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      cursor: pointer; /*這個屬性用於指定當鼠標懸停在元素上時要顯示的游標形狀。它的值可以是各種預定義的游標類型，例如 pointer、default、help 等*/
+      font-size: 16px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .wrapper .register-link {
+      font-size: 14.5px;
+      text-align: center;
+      margin: 20px 0 15px;
+    }
+
+    .register-link p a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .register-link p a:hover {
+      text-decoration: underline;
+    }
+
+    //NAVBAR
+
+    .navbar {
+      .container {
+        padding: 10px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 10vh;
+
+        .logo {
+          img {
+            width: 120px;
+          }
+
+          h1 {
+            /* 最左上方標題H20 baby swim*/
+            font-size: 25px;
+            font-weight: 500;
+            color: rgb(52, 52, 52);
+            font-family: inter, ui-sans-serif, system-ui, sans-serif;
+            letter-spacing: 1.5px; /* 增加 1 像素的間距 */
+          }
+        }
+        .links {
+          display: flex;
+          gap: 15px;
+          align-items: center;
+          font-size: 16px;
+
+          h6 {
+            font-size: 16px;
+            font-weight: 600;
+          }
+
+          span {
+            cursor: pointer; // 當懸停在 logo 上時，鼠標變成小手形狀
+          }
+
+          .write {
+            background-color: lightblue;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; //變成圓形
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 300;
+
+            &:hover {
+              color: #333;
+              background-color: white;
+              border: lightblue 1px solid;
+            }
+          }
+        }
+      }
+    } //navbar
+
+    // Footer
+
+    footer {
+      padding: 40px;
+      background-color: rgba(0, 200, 255, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      gap: 10px;
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    // Home
+
+    .home {
+      // news session
+
+      .news {
+        position: relative; /* 確保偽元素能正確定位在此區塊內 */
+        height: 60vh;
+        background-image: url("images/header.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .news h2 {
+        /* SWIM & HAVE FUN */
+        font-size: 60px;
+        margin-left: 6%;
+        letter-spacing: 2px; /* 輕微增加字母間距 */
+        word-spacing: 2px; /* 輕微增加單詞間距 */
+        font-weight: 550;
+      }
+      .news p {
+        color: rgba(0, 0, 0, 0.826);
+        font-size: 20px;
+        margin: 35px 0;
+        margin-left: 6%;
+        letter-spacing: 0.5px; /* 輕微增加字母間距 */
+        word-spacing: 1px; /* 輕微增加單詞間距 */
+      }
+      .news a {
+        color: white;
+        text-decoration: none;
+        border: 1px solid #acacac;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: dodgerblue;
+      }
+
+      .news::before {
+        content: ""; /* 這是必要的，因為偽元素需要內容來顯示 */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.25); /* 白色半透明覆蓋層 */
+        z-index: 0; /* 確保它在背景圖片和文字內容之間 */
+      }
+
+      .news h2,
+      .news p {
+        position: relative; /* 讓這些元素相對定位，以便能應用 z-index */
+        z-index: 1; /* 高於偽元素的 z-index */
+        max-width: 92%; /* 預留一些空間防止內容溢出 */
+      }
+
+      // sixphoto session
+
+      .sixphotos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; // 确保图片从头开始排列
+        gap: 0; // 确保没有间距
+        margin-top: 6px;
+
+        .photo-container {
+          position: relative; // 相对定位
+          flex: 1 1 33.333%; // 每行3个
+          max-width: 33.333%;
+          padding-top: 33.333%; // 通过padding确保高度与宽度相同，形成正方形
+          box-sizing: border-box; // 确保padding和border不会影响元素的总宽度
+
+          img {
+            position: absolute; // 绝对定位，填满容器
+            top: 0;
+            left: 0;
+            width: 100%; // 图片宽度为100%，以适应父容器
+            height: 100%; // 图片高度为100%，以适应父容器
+            object-fit: cover; // 确保图片在父容器内填充
+          }
+        }
+      }
+
+      // info
+      .shop {
+        display: flex;
+      }
+
+      .shop img {
+        width: 50%;
+      }
+
+      .info {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 5%;
+      }
+
+      .info h2 {
+        font-size: 40px;
+        margin: 25px 0;
+      }
+
+      //service session
+
+      .product {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 创建两列 */
+        grid-template-rows: auto repeat(2, auto); /* 三行：第一行为标题，接下来两行为 div */
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(135, 227, 255, 0.3) 100%
+        );
+        align-items: start; /* 顶部对齐 */
+        justify-content: space-between; /* 确保列间的间距 */
+        padding: 40px 140px;
+        gap: 40px; /* 设置行与列之间的间隙 */
+        font-family: serif;
+
+        h2 {
+          grid-column: 1 / -1; /* 横跨所有列 */
+          text-align: left; /* 文字左对齐 */
+          font-size: 48px; /* 设置适当的字体大小 */
+          color: #333; /* 字体颜色 */
+          font-weight: 500;
+        }
+
+        div {
+          text-align: left;
+          flex-direction: column; /* 确保子元素垂直排列 */
+
+          img {
+            width: 80px;
+          }
+
+          h3 {
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 500;
+            letter-spacing: 0.5px; /* 轻微增加字母间距 */
+            word-spacing: 1px; /* 轻微增加单词间距 */
+          }
+
+          p {
+            font-size: 18px;
+            letter-spacing: 0.2px; /* 轻微增加字母间距 */
+            word-spacing: 0.4px; /* 轻微增加单词间距 */
+          }
+        }
+      }
+    } //home
+
+    //dashbard
+
+    .dashboard {
+      display: flex;
+      background-color: antiquewhite;
+      flex-grow: 1; /* 确保 dashboard 占满剩余空间 */
+
+      .sidebar {
+        width: 280px;
+        background: #f4f4f4;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
+        .user-info {
+          margin-bottom: 20px;
+          height: 30vh;
+          background-color: #acacac;
+        }
+
+        .announcements {
+          margin-top: 20px;
+          height: 30vh;
+          background-color: #acacac;
+        }
+      }
+
+      .dashboard-content {
+        flex: 1;
+        padding: 20px;
+
+        .dashboard-buttons {
+          display: flex;
+          gap: 30px;
+          margin-bottom: 20px;
+          background-color: #acacac;
+          justify-content: center;
+
+          button {
+            padding: 10px 20px;
+            cursor: pointer;
+          }
+        }
+
+        .dashboard-display {
+          // 這裡是顯示具體內容的區域
+          background-color: lightblue;
+          max-height: 75vh; /* 設置最大高度 */
+          overflow-y: auto; /* 超出部分使用卷軸 */
+          border-radius: 8px;
+        }
+      }
+
+      .schedule-container {
+        display: flex;
+        flex-wrap: wrap; /* 讓卡片換行 */
+        gap: 20px; /* 卡片之間的間距 */
+        padding: 20px;
+        max-height: 80vh; /* 設置最大高度 */
+        overflow-y: auto; /* 超出部分使用卷軸 */
+        box-sizing: border-box;
+      }
+
+      .card {
+        background-color: #fff; /* 卡片背景色 */
+        border: 1px solid #ddd; /* 卡片邊框 */
+        border-radius: 8px; /* 卡片圓角 */
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 卡片陰影 */
+        flex: 1 1 calc(33.333% - 40px); /* 卡片寬度，減去間距 */
+        box-sizing: border-box;
+        margin: 15px;
+
+        .card-info {
+          display: grid;
+          grid-template-columns: 1fr 1fr; /* 兩列等寬 */
+          gap: 2px; /* 列之間的間距 */
+          margin-top: 5px;
+          font-size: 15px;
+        }
+
+        button {
+          background-color: #007bff; /* 按鈕背景色 */
+          color: #fff; /* 按鈕文字顏色 */
+          border: none; /* 按鈕無邊框 */
+          border-radius: 4px; /* 按鈕圓角 */
+          padding: 3px 8px; /* 按鈕內間距 */
+          cursor: pointer; /* 滑鼠指針變為指標 */
+          font-size: 16px; /* 按鈕字體大小 */
+          margin-top: 3px;
+        }
+
+        button:hover {
+          background-color: #0056b3; /* 按鈕懸停背景色 */
+        }
+      }
+
+      .no-schedule {
+        text-align: center; /* 居中對齊 */
+        width: 100%;
+      }
+    } //dashbard
+  } //app.container
+} //app
