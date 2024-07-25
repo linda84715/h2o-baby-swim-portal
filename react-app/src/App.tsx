@@ -62,11 +62,16 @@ const router = createBrowserRouter([
         path: "/Single",
         element: <Single />,
       },
-      {
-        path: "/myprogress",
-        element: <MyProgress />, // 新增的路由配置
-      },
     ],
+  },
+  {
+    path: "/myprogress",
+    element: (
+      <>
+        <Navbar />
+        <MyProgress />
+      </>
+    ), // 新增的路由配置，包含 Navbar 但不包含 Footer
   },
   {
     path: "/Register",
@@ -75,33 +80,6 @@ const router = createBrowserRouter([
   {
     path: "/Login",
     element: <Login />,
-  },
-  {
-    path: "/dashboard",
-    element: <DashboardLayout />, // 使用 DashboardLayout 來包含 Dashboard 頁面
-    children: [
-      {
-        path: "/dashboard",
-        element: <Navigate to="/dashboard/schedule" />, // 預設重定向到我的課表
-      },
-      {
-        path: "schedule",
-        element: <MySchedule />,
-      },
-      {
-        path: "book-class",
-        element: <BookClass />,
-      },
-      {
-        path: "edit-profile",
-        element: <EditProfile />,
-      },
-      {
-        path: "kidinfo",
-        element: <KidInfo />,
-      },
-
-    ],
   },
   {
     path: "/dashboard",
@@ -143,47 +121,3 @@ function App() {
 }
 
 export default App;
-
-
-/*import Button from "./components/Button";
-
-
-function App() {
-  return (
-    <div>
-      <Button onClick={() => console.log('Clicked')}>My Button</Button>
-    </div> //使用了 Button 組件，並傳遞了一個 onClick 屬性，這個屬性是一個回調函數：
-  )
-} */
-
-/*
-import Alert from "./components/Alert";
-
-
-function App() {
-  return (
-    <div >
-      <Alert>
-        Hello World
-      </Alert> 
-    </div>
-  )
-} */
-
-/* 
-import ListGroup from "./components/ListGroup";
-
-//PacalCasing
-function App() {
-  let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
-  
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  }
-  return (
-  <div>
-    <ListGroup items={items} heading="Cities" onSelectItem={handleSelectItem}/>
-    </div> //這是 JSX 語法的一部分，它描述了要在 UI 中渲染的元素樹, 渲染ListGroup 組件，並傳遞了兩個 props：
-)}
-*/
-// export default App;  // 導出此function, 其他文件導入時，會得到這個 App 函數組件的引用
