@@ -18,6 +18,7 @@ import MySchedule from './pages/MySchedule';
 import BookClass from './pages/BookClass';
 import EditProfile from './pages/EditProfile'
 import KidInfo from "./pages/KidInfo";
+import MyProgress from "./pages/MyProgress";
 
 const Layout = () => {
   return (
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
         path: "/Single",
         element: <Single />,
       },
+      {
+        path: "/myprogress",
+        element: <MyProgress />, // 新增的路由配置
+      },
     ],
   },
   {
@@ -70,6 +75,33 @@ const router = createBrowserRouter([
   {
     path: "/Login",
     element: <Login />,
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />, // 使用 DashboardLayout 來包含 Dashboard 頁面
+    children: [
+      {
+        path: "/dashboard",
+        element: <Navigate to="/dashboard/schedule" />, // 預設重定向到我的課表
+      },
+      {
+        path: "schedule",
+        element: <MySchedule />,
+      },
+      {
+        path: "book-class",
+        element: <BookClass />,
+      },
+      {
+        path: "edit-profile",
+        element: <EditProfile />,
+      },
+      {
+        path: "kidinfo",
+        element: <KidInfo />,
+      },
+
+    ],
   },
   {
     path: "/dashboard",

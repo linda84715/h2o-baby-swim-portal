@@ -7,6 +7,7 @@ import cors from 'cors';
 import session from 'express-session';
 import MySQLStore from 'express-mysql-session'; // 使用 express-mysql-session 來存儲 session 到 MySQL
 import { db } from './db.js'; // 確保導入數據庫連接
+import progressRoutes from './routes/progress.js';
 
 const app = express();
 
@@ -57,6 +58,7 @@ app.use(session({
 app.use("/api/auth", authRoutes); // 設置 auth 路由
 app.use("/api/users", userRoutes); // 設置 users 路由
 app.use("/api/posts", postRoutes); // 設置 posts 路由
+app.use('/api/progress', progressRoutes);
 
 // 測試路由
 app.get("/test", (req, res) => {

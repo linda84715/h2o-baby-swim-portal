@@ -1,55 +1,56 @@
-TABLE_NAME,COLUMN_NAME,COLUMN_TYPE,IS_NULLABLE,COLUMN_DEFAULT,COLUMN_KEY,EXTRA
-availablecourses,CourseID,int,NO,0,,
-availablecourses,CourseName,varchar(100),NO,NULL,,
-availablecourses,Location,varchar(255),NO,NULL,,
-availablecourses,StartDate,varchar(10),YES,NULL,,
-availablecourses,TimeSlot,varchar(20),YES,NULL,,
-availablecourses,DayOfWeek,varchar(10),YES,NULL,,
-availablecourses,TotalWeeks,int,YES,NULL,,
-availablecourses,AvailableSpots,int,YES,NULL,,
-availablecourses,CoachFirstName,varchar(50),NO,NULL,,
-availablecourses,CoachLastName,varchar(50),NO,NULL,,
-Bookings,BookingID,int,NO,NULL,PRI,auto_increment
-Bookings,CourseID,int,YES,NULL,MUL,
-Bookings,StudentID,int,YES,NULL,MUL,
-Bookings,DateBooked,date,YES,NULL,,
-Bookings,TimeBooked,datetime,YES,NULL,,
-Coaches,CoachID,int,NO,NULL,PRI,auto_increment
-Coaches,FirstName,varchar(50),NO,NULL,,
-Coaches,LastName,varchar(50),NO,NULL,,
-Coaches,Email,varchar(100),NO,NULL,UNI,
-Coaches,Phone,varchar(20),YES,NULL,,
-Coaches,DateOfBirth,date,NO,NULL,,
-Coaches,Address,varchar(255),NO,NULL,,
-Coaches,HireDate,date,NO,NULL,,
-Courses,CourseID,int,NO,NULL,PRI,auto_increment
-Courses,CourseName,varchar(100),NO,NULL,,
-Courses,Location,varchar(255),NO,NULL,,
-Courses,StartDate,date,YES,NULL,,
-Courses,TimeSlot,varchar(20),YES,NULL,,
-Courses,DayOfWeek,varchar(10),YES,NULL,,
-Courses,CoachID,int,YES,NULL,MUL,
-Courses,TotalWeeks,int,YES,NULL,,
-Courses,AvailableSpots,int,YES,NULL,,
-CourseSessions,SessionID,int,NO,NULL,PRI,auto_increment
-CourseSessions,CourseID,int,YES,NULL,MUL,
-CourseSessions,Date,date,YES,NULL,,
-CourseSessions,TimeSlot,varchar(20),YES,NULL,,
-CourseSessions,WeekNumber,int,YES,NULL,,
-sessions,session_id,varchar(128),NO,NULL,PRI,
-sessions,expires,"int unsigned",NO,NULL,,
-sessions,data,mediumtext,YES,NULL,,
-Students,StudentID,int,NO,NULL,PRI,auto_increment
-Students,UserID,int,YES,NULL,MUL,
-Students,FirstName,varchar(255),YES,NULL,,
-Students,LastName,varchar(255),YES,NULL,,
-Students,Birthdate,date,YES,NULL,,
-Users,id,int,NO,NULL,PRI,auto_increment
-Users,username,varchar(255),NO,NULL,,
-Users,password,varchar(255),NO,NULL,,
-Users,email,varchar(255),NO,NULL,UNI,
-Users,FirstName,varchar(50),NO,NULL,,
-Users,LastName,varchar(50),NO,NULL,,
-Users,Address,varchar(255),YES,NULL,,
-Users,Phone,varchar(20),YES,NULL,,
-Users,Points,int,YES,0,,
+table_name,attribute_name,attribute_type,key_type,view_name
+sessions,session_id,varchar(128),"PRIMARY KEY",NULL
+sessions,expires,"int unsigned",NULL,NULL
+sessions,data,mediumtext,NULL,NULL
+Students,StudentID,int,"PRIMARY KEY",NULL
+Students,UserID,int,"FOREIGN KEY",NULL
+Students,FirstName,varchar(255),NULL,NULL
+Students,LastName,varchar(255),NULL,NULL
+Students,Birthdate,date,NULL,NULL
+Coaches,CoachID,int,"PRIMARY KEY",NULL
+Coaches,FirstName,varchar(50),NULL,NULL
+Coaches,LastName,varchar(50),NULL,NULL
+Coaches,Email,varchar(100),NULL,NULL
+Coaches,Phone,varchar(20),NULL,NULL
+Coaches,DateOfBirth,date,NULL,NULL
+Coaches,Address,varchar(255),NULL,NULL
+Coaches,HireDate,date,NULL,NULL
+CourseSessions,SessionID,int,"PRIMARY KEY",NULL
+CourseSessions,CourseID,int,"FOREIGN KEY",NULL
+CourseSessions,Date,date,NULL,NULL
+CourseSessions,TimeSlot,varchar(20),NULL,NULL
+CourseSessions,WeekNumber,int,NULL,NULL
+Users,id,int,"PRIMARY KEY",NULL
+Users,username,varchar(255),NULL,NULL
+Users,password,varchar(255),NULL,NULL
+Users,email,varchar(255),NULL,NULL
+Users,FirstName,varchar(50),NULL,NULL
+Users,LastName,varchar(50),NULL,NULL
+Users,Address,varchar(255),NULL,NULL
+Users,Phone,varchar(20),NULL,NULL
+Users,Points,int,NULL,NULL
+Bookings,BookingID,int,"PRIMARY KEY",NULL
+Bookings,CourseID,int,"FOREIGN KEY",NULL
+Bookings,StudentID,int,"FOREIGN KEY",NULL
+Bookings,DateBooked,date,NULL,NULL
+Bookings,TimeBooked,datetime,NULL,NULL
+Courses,CourseID,int,"PRIMARY KEY",NULL
+Courses,CourseName,varchar(100),NULL,NULL
+Courses,Location,varchar(255),NULL,NULL
+Courses,StartDate,date,NULL,NULL
+Courses,TimeSlot,varchar(20),NULL,NULL
+Courses,DayOfWeek,varchar(10),NULL,NULL
+Courses,CoachID,int,"FOREIGN KEY",NULL
+Courses,TotalWeeks,int,NULL,NULL
+Courses,AvailableSpots,int,NULL,NULL
+availablecourses,CourseID,int,NULL,NULL
+availablecourses,CourseName,varchar(100),NULL,NULL
+availablecourses,Location,varchar(255),NULL,NULL
+availablecourses,StartDate,varchar(10),NULL,NULL
+availablecourses,TimeSlot,varchar(20),NULL,NULL
+availablecourses,DayOfWeek,varchar(10),NULL,NULL
+availablecourses,TotalWeeks,int,NULL,NULL
+availablecourses,AvailableSpots,int,NULL,NULL
+availablecourses,CoachFirstName,varchar(50),NULL,NULL
+availablecourses,CoachLastName,varchar(50),NULL,NULL
+availablecourses,NULL,NULL,NULL,availablecourses

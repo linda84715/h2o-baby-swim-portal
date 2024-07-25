@@ -33,6 +33,7 @@ const Navbar = () => {
           <Link className='link' to='/'><h6>Booking</h6></Link>
           <Link className='link' to='/login'><h6>Login</h6></Link>
           <Link className='link' to='/dashboard'><h6>Dashboard</h6></Link>
+          <Link className='link' to='/myprogress'><h6>My Progress</h6></Link>
           <span className='link' onClick={handleLogout}><h6>Logout</h6></span>
           <span className="write">
             <Link to="/write">Write</Link>

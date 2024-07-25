@@ -11,7 +11,7 @@ export const getUserInfo = (req, res) => {
 
   // 查詢語句，從資料庫中選取使用者的名字和姓氏
   // 這行代碼定義了一個 SQL 查詢語句，使用 ? 作為佔位符，用於防止 SQL 注入。
-  const q = "SELECT firstname, lastname, email, address, phone, points FROM users WHERE id = ?";
+  const q = "SELECT id,firstname, lastname, email, address, phone, points FROM users WHERE id = ?";
   // 執行查詢
   db.query(q, [userId], (err, data) => {
     // 如果查詢出錯，返回 500 伺服器錯誤
@@ -255,4 +255,3 @@ export const updateUserProfile = (req, res) => {
     return res.status(200).json({ message: "Profile updated successfully" });
   });
 };
-

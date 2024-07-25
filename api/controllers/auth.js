@@ -40,7 +40,7 @@ export const login = (req, res) => {
   req.session.userId = user.id; // 將用戶 ID 存儲在 session 中
   req.session.username = user.username; // 將用戶名存儲在 session 中
 
-    res.status(200).json("Login successful!");
+  res.status(200).json({ message: "Login successful!", userId: user.id }); //很重要！將userId傳給前端
   });
 };
 

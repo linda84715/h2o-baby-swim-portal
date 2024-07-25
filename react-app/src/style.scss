@@ -485,5 +485,54 @@ html {
         width: 100%;
       }
     } //dashbard
+
+    //MyProgress page------------------------------------------------------------------------------------------------------------------------------
+
+    .my-progress {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+  
+      .student-buttons {
+          margin-bottom: 20px;
+      }
+  
+      .progress-section {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+  
+          .milestones {
+              width: 45%;
+          }
+  
+          .progress-table {
+              width: 45%;
+  
+              table {
+                  width: 100%;
+                  border-collapse: collapse;
+                  margin-bottom: 20px;
+  
+                  th, td {
+                      border: 1px solid #ccc;
+                      padding: 10px;
+                      text-align: left;
+                  }
+  
+                  th {
+                      background-color: #f5f5f5;
+                  }
+              }
+          }
+      }
+  }//MyProgress page------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
   } //app.container
 } //app
