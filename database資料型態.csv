@@ -1,13 +1,13 @@
 table_name,attribute_name,attribute_type,key_type,view_name
-sessions,session_id,varchar(128),"PRIMARY KEY",NULL
-sessions,expires,"int unsigned",NULL,NULL
+sessions,session_id,varchar(128),PRIMARY KEY,NULL
+sessions,expires,int unsigned,NULL,NULL
 sessions,data,mediumtext,NULL,NULL
-Students,StudentID,int,"PRIMARY KEY",NULL
-Students,UserID,int,"FOREIGN KEY",NULL
+Students,StudentID,int,PRIMARY KEY,NULL
+Students,UserID,int,FOREIGN KEY,NULL
 Students,FirstName,varchar(255),NULL,NULL
 Students,LastName,varchar(255),NULL,NULL
 Students,Birthdate,date,NULL,NULL
-Coaches,CoachID,int,"PRIMARY KEY",NULL
+Coaches,CoachID,int,PRIMARY KEY,NULL
 Coaches,FirstName,varchar(50),NULL,NULL
 Coaches,LastName,varchar(50),NULL,NULL
 Coaches,Email,varchar(100),NULL,NULL
@@ -15,12 +15,12 @@ Coaches,Phone,varchar(20),NULL,NULL
 Coaches,DateOfBirth,date,NULL,NULL
 Coaches,Address,varchar(255),NULL,NULL
 Coaches,HireDate,date,NULL,NULL
-CourseSessions,SessionID,int,"PRIMARY KEY",NULL
-CourseSessions,CourseID,int,"FOREIGN KEY",NULL
+CourseSessions,SessionID,int,PRIMARY KEY,NULL
+CourseSessions,CourseID,int,FOREIGN KEY,NULL
 CourseSessions,Date,date,NULL,NULL
 CourseSessions,TimeSlot,varchar(20),NULL,NULL
 CourseSessions,WeekNumber,int,NULL,NULL
-Users,id,int,"PRIMARY KEY",NULL
+Users,id,int,PRIMARY KEY,NULL
 Users,username,varchar(255),NULL,NULL
 Users,password,varchar(255),NULL,NULL
 Users,email,varchar(255),NULL,NULL
@@ -29,18 +29,18 @@ Users,LastName,varchar(50),NULL,NULL
 Users,Address,varchar(255),NULL,NULL
 Users,Phone,varchar(20),NULL,NULL
 Users,Points,int,NULL,NULL
-Bookings,BookingID,int,"PRIMARY KEY",NULL
-Bookings,CourseID,int,"FOREIGN KEY",NULL
-Bookings,StudentID,int,"FOREIGN KEY",NULL
+Bookings,BookingID,int,PRIMARY KEY,NULL
+Bookings,CourseID,int,FOREIGN KEY,NULL
+Bookings,StudentID,int,FOREIGN KEY,NULL
 Bookings,DateBooked,date,NULL,NULL
 Bookings,TimeBooked,datetime,NULL,NULL
-Courses,CourseID,int,"PRIMARY KEY",NULL
+Courses,CourseID,int,PRIMARY KEY,NULL
 Courses,CourseName,varchar(100),NULL,NULL
 Courses,Location,varchar(255),NULL,NULL
 Courses,StartDate,date,NULL,NULL
 Courses,TimeSlot,varchar(20),NULL,NULL
 Courses,DayOfWeek,varchar(10),NULL,NULL
-Courses,CoachID,int,"FOREIGN KEY",NULL
+Courses,CoachID,int,FOREIGN KEY,NULL
 Courses,TotalWeeks,int,NULL,NULL
 Courses,AvailableSpots,int,NULL,NULL
 availablecourses,CourseID,int,NULL,NULL

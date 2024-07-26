@@ -487,125 +487,162 @@ html {
     } //dashbard
 
     //MyProgress page------------------------------------------------------------------------------------------------------------------------------
-
     .my-progress {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: 10px;
+      background-color: #333;
   
       .student-buttons {
           margin-bottom: 20px;
+          display: flex;
+          gap:10px;
+  
+          button {
+              padding: 10px 20px;
+              border: 2px solid #0288d1; /* 外框顏色 */
+              background-color: #fff; /* 預設按鈕背景色為白色 */
+              color: #0288d1; /* 字體顏色 */
+              border-radius: 5px;
+              cursor: pointer;
+              font-size: 1rem;
+  
+              &.selected {
+                  background-color: #0288d1; /* 選中的按鈕顏色 */
+                  color: #fff; /* 選中按鈕的字體顏色 */
+              }
+          }
       }
-
-      
   
       .progress-section {
           display: flex;
           width: 100%;
           justify-content: space-between;
+          padding: 0 30px; /* 添加左右內邊距，使兩個區域更靠中間 */
+
+
   
           .milestones {
-              width: 45%;
-          }
+              width: 48%;
+              max-height: 80vh;
+              overflow-y: auto;
+              overflow-x: auto; /* 添加橫向滾動 */
+              background-color: #ffffff; /* 白色背景 */
+              border-radius: 10px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              padding: 20px;
+  
+              .milestones-container {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  padding: 20px;
+                  background-color: #81d4fa;
+  
+                  .header {
+                      text-align: center;
+                      margin-bottom: 20px;
+  
+                      div {
+                          font-size: 1.5rem;
+                          margin-bottom: 10px;
+                      }
+                  }
+  
+                  .milestone-row,
+                  .medals-row,
+                  .approval-row {
+                      display: flex;
+                      justify-content: space-between;
+                      width: 600px; /* 固定寬度，確保每列寬度一致 */
+                  }
+  
+                  .milestone {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      width: 150px; /* 固定寬度 */
+                      text-align: center;
+                      border: 1px solid #ccc; /* 加上邊框 */
+                      padding: 10px; /* 增加內邊距 */
+                      background-color: #e0f7fa; /* 水藍色背景 */
+                      border-radius: 5px;
+  
+                      .milestone-name {
+                          margin-top: 10px;
+                          font-size: 1.2rem;
+                      }
+                  }
+  
+                  .medals-grid {
+                      display: grid;
+                      grid-template-columns: repeat(2, 1fr);
+                      gap: 10px;
+                      margin-top: 10px;
+  
+                      img {
+                          width: 50px;
+                          height: 50px;
+                      }
+                  }
+  
+                  .approved {
+                      margin-top: 5px;
+                      font-size: 1.2rem;
+                      color: green;
+                      font-weight: bold;
+                  }
+              }
+          } //milestones
   
           .progress-table {
               width: 45%;
+              max-height: 80vh;
+              overflow-y: auto;
+              background-color: #ffffff; /* 白色背景 */
+              border-radius: 10px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              padding: 20px;
   
               table {
                   width: 100%;
                   border-collapse: collapse;
                   margin-bottom: 20px;
   
-                  th, td {
+                  th,
+                  td {
                       border: 1px solid #ccc;
                       padding: 10px;
                       text-align: left;
                   }
   
                   th {
-                      background-color: #f5f5f5;
+                      background-color: #81d4fa; /* 水藍色表頭 */
+                      color: #fff;
+                      width: 25%; /* 確保第一列寬度固定 */
+                  }
+  
+                  td {
+                      width: 25%; /* 確保所有列寬度一致 */
                   }
               }
           }
       }
-  }//MyProgress page------------------------------------------------------------------------------------------------------------------------------
+  
+      .no-students {
+          text-align: center;
+          padding: 20px;
+          font-size: 1.2rem;
+          color: #ff0000;
+  
+          a {
+              color: #0288d1;
+              text-decoration: underline;
+          }
+      }
+  }//My Progress Page-----------------------------------------------------------------------------------------------------------------
+  
 
-  .no-students {
-    text-align: center;
-    padding: 20px;
-    font-size: 1.2rem;
-    color: #ff0000;
-}
-
-.no-students a {
-    color: #0000ff;
-    text-decoration: underline;
-}
-  //Milestone -----------------------------------------------------------------------------------------------------------------
-  .milestones-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.header div {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.milestone-row, .medals-row, .approval-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.milestone {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 23%;
-    text-align: center;
-    border: 1px solid #ccc; /* 加上边框 */
-    padding: 10px; /* 增加内边距 */
-}
-
-.milestone-name {
-    margin-top: 10px;
-    font-size: 1.2rem;
-}
-
-.medals-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.medals-grid img {
-    width: 50px;
-    height: 50px;
-}
-
-.approved {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    color: green;
-    font-weight: bold;
-}
-
-
-//Milestone -----------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-  } //app.container
+} //app.container
 } //app
