@@ -1,4 +1,4 @@
-import { db } from "../db.js";
+import { db } from "../db.js"; //改檔案名稱
 import bcrypt from "bcryptjs";
 
 export const register = (req, res) => {
