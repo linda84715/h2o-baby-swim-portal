@@ -1,42 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // 引入 useNavigate
+import { useNavigate } from 'react-router-dom';
 import StudentButtons from '../components/StudentButtons';
 import Milestones from '../components/Milestones';
 import ProgressTable from '../components/ProgressTable';
-
 
 const MyProgress = () => {
     const [userId, setUserId] = useState(null);
     const [students, setStudents] = useState([]);
     const [selectedStudent, setSelectedStudent] = useState(null);
     const [progressData, setProgressData] = useState([]);
-    const navigate = useNavigate(); // 初始化 useNavigate
+    const navigate = useNavigate();
 
-    // 獲取 userId
     useEffect(() => {
         axios.get('http://localhost:3033/api/users/userinfo')
             .then(res => {
-                setUserId(res.data.id); // 假設後端返回的數據中包含用戶的 ID
+                setUserId(res.data.id);
             })
             .catch(err => console.error(err));
     }, []);
 
-    // 獲取學生列表
     useEffect(() => {
         if (userId) {
             axios.get('http://localhost:3033/api/users/students')
                 .then(res => {
                     setStudents(res.data);
                     if (res.data.length > 0) {
-                        setSelectedStudent(res.data[0].StudentID); // 自動選擇第一個學生
+                        setSelectedStudent(res.data[0].StudentID);
                     }
                 })
                 .catch(err => console.error(err));
         }
     }, [userId]);
 
-    // 獲取選定學生的進度數據
     useEffect(() => {
         if (selectedStudent) {
             axios.get(`http://localhost:3033/api/progress/${selectedStudent}`)
@@ -53,17 +49,23 @@ const MyProgress = () => {
         );
     }
 
+    const selectedStudentName = students.find(student => student.StudentID === selectedStudent)?.FirstName;
+
     return (
         <div className="my-progress">
             <div className="student-buttons">
-                <StudentButtons students={students} onSelectStudent={setSelectedStudent} />
+                <StudentButtons 
+                    students={students} 
+                    onSelectStudent={setSelectedStudent} 
+                    selectedStudent={selectedStudent} 
+                />
             </div>
             <div className="progress-section">
                 <div className="milestones">
-                    <Milestones progressData={progressData} />
+                    <Milestones progressData={progressData} studentName={selectedStudentName} />
                 </div>
                 <div className="progress-table">
-                    <ProgressTable progressData={progressData} />
+                    <ProgressTable progressData={progressData} studentName={selectedStudentName} />
                 </div>
             </div>
         </div>

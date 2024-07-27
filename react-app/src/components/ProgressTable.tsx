@@ -1,6 +1,6 @@
+import React from 'react';
 
-
-const ProgressTable = ({ progressData }) => {
+const ProgressTable = ({ progressData, studentName }) => {
     // 將進度數據按里程碑分組
     const groupedProgress = progressData.reduce((acc, item) => {
         if (!acc[item.milestone_name]) {
@@ -19,6 +19,7 @@ const ProgressTable = ({ progressData }) => {
 
     return (
         <div>
+            <h1>{studentName}'s Progress Table</h1>
             {Object.keys(groupedProgress).map(milestone => (
                 <div key={milestone}>
                     <h2>{milestone}</h2>

@@ -6,7 +6,7 @@ import littleFloater from '../images/little_floater.png';
 import littleExplorer from '../images/little_explorer.png';
 import littleSwimmer from '../images/little_swimmer.png';
 
-const Milestones = ({ progressData = [] }) => {
+const Milestones = ({ progressData = [], studentName }) => {
     // 確保 progressData 是一個有效的數組
     if (!Array.isArray(progressData) || progressData.length === 0) {
         return <div>No progress data available</div>;
@@ -36,12 +36,12 @@ const Milestones = ({ progressData = [] }) => {
     return (
         <div className="milestones-container">
             <div className="header">
-                <div>START</div>
-                <div>H20 Baby Swim</div>
+                <h2>{studentName}'s Milestone</h2>
+                <h3>H20 Baby Swim</h3>
             </div>
             <div className="milestone-row">
                 {Object.keys(groupedProgress).map(milestone => (
-                    <div key={milestone} className="milestone">
+                    <div key={milestone} className="milestone-col">
                         <img src={milestoneImages[milestone.toLowerCase()]} alt={milestone} />
                         <div className="milestone-name">{milestone}</div>
                     </div>
@@ -49,7 +49,7 @@ const Milestones = ({ progressData = [] }) => {
             </div>
             <div className="medals-row">
                 {Object.keys(groupedProgress).map(milestone => (
-                    <div key={milestone} className="milestone">
+                    <div key={milestone} className="milestone-col">
                         <div className="medals-grid">
                             {[...Array(4)].map((_, index) => (
                                 <img 
@@ -64,7 +64,7 @@ const Milestones = ({ progressData = [] }) => {
             </div>
             <div className="approval-row">
                 {Object.keys(groupedProgress).map(milestone => (
-                    <div key={milestone} className="milestone">
+                    <div key={milestone} className="milestone-col">
                         {getMedalCount(milestone) === 4 && <div className="approved">Approved!</div>}
                     </div>
                 ))}
