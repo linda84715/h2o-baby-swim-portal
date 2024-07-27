@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../images/logo.png';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // 檢查使用者是否已登錄
+    fetch('http://localhost:3033/api/auth/check-auth', {
+      method: 'GET',
+      credentials: 'include' // 確保傳遞cookie
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.isAuthenticated) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    })
+    .catch(error => {
+      console.error('Error checking auth status:', error);
+    });
+  }, []);
 
   const handleLogout = () => {
     fetch('http://localhost:3033/api/auth/logout', {
@@ -14,6 +34,7 @@ const Navbar = () => {
     .then(data => {
       if (data.message === 'Logout successful.') {
         alert('You have been logged out.');
+        setIsLoggedIn(false);
         navigate('/');
       }
     })
@@ -30,14 +51,16 @@ const Navbar = () => {
         </div>
         <div className="links">
           <Link className='link' to='/'><h6>About Us</h6></Link>
-          <Link className='link' to='/'><h6>Booking</h6></Link>
-          <Link className='link' to='/login'><h6>Login</h6></Link>
-          <Link className='link' to='/dashboard'><h6>Dashboard</h6></Link>
-          <Link className='link' to='/myprogress'><h6>My Progress</h6></Link>
-          <span className='link' onClick={handleLogout}><h6>Logout</h6></span>
-          <span className="write">
-            <Link to="/write">Write</Link>
-          </span>
+          {isLoggedIn ? (
+            <>
+              <Link className='link' to='/dashboard/book-class'><h6>Booking</h6></Link>
+              <Link className='link' to='/dashboard'><h6>Dashboard</h6></Link>
+              <Link className='link' to='/myprogress'><h6>My Kid's Progress</h6></Link>
+              <span className="write" onClick={handleLogout}><h6>Logout</h6></span>
+            </>
+          ) : (
+            <Link className="write" to='/login'><h6>Login</h6></Link>
+          )}
         </div>
       </div>
     </div>  

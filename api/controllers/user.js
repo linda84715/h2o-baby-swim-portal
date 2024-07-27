@@ -215,7 +215,7 @@ export const bookCourse = (req, res) => {
 };
 
 
-// 添加新學生
+/*// 添加新學生
 export const addStudent = (req, res) => {
   const userId = req.session.userId;
   const { FirstName, LastName, Birthdate } = req.body;
@@ -226,6 +226,42 @@ export const addStudent = (req, res) => {
       return res.status(500).json({ error: "Database query error" });
     }
     return res.status(201).json({ StudentID: results.insertId, UserID: userId, FirstName, LastName, Birthdate });
+  });
+};*/
+
+// 添加新學生測試
+export const addStudent = (req, res) => {
+  const userId = req.session.userId;
+  const { FirstName, LastName, Birthdate } = req.body;
+
+  const query = "INSERT INTO Students (UserID, FirstName, LastName, Birthdate) VALUES (?, ?, ?, ?)";
+  db.query(query, [userId, FirstName, LastName, Birthdate], (err, results) => {
+      if (err) {
+          return res.status(500).json({ error: "Database query error" });
+      }
+
+      const newStudentId = results.insertId;
+      // 插入預設進度數據
+      const defaultProgress = [
+          // Little Fun Time
+          [newStudentId, 1, '2023-07-01', 'Test Coach', 'Test progress feature'],
+          [newStudentId, 2, '2023-07-03', 'Test Coach', 'Test progress feature'],
+          [newStudentId, 3, '2023-07-07', 'Test Coach', 'Test progress feature'],
+          [newStudentId, 4, '2023-07-11', 'Test Coach', 'Test progress feature'],
+          // Little Floater
+          [newStudentId, 5, '2023-07-15', 'Test Coach', 'Test progress feature'],
+          [newStudentId, 6, '2023-07-15', 'Test Coach', 'Test progress feature'],
+          [newStudentId, 7, '2023-07-17', 'Test Coach', 'Test progress feature'],
+
+      ];
+
+      const progressQuery = "INSERT INTO progress (student_id, item_id, completion_date, coach_signature, notes) VALUES ?";
+      db.query(progressQuery, [defaultProgress], (err) => {
+          if (err) {
+              return res.status(500).json({ error: "Database query error while inserting default progress" });
+          }
+          return res.status(201).json({ StudentID: newStudentId, UserID: userId, FirstName, LastName, Birthdate });
+      });
   });
 };
 

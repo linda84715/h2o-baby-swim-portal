@@ -9,6 +9,7 @@ import babyhead from '../images/babyhead.png';
 import star from '../images/icons8-star.png';
 import medal from '../images/icons8medal.png';
 import facebookLike from '../images/icons8-facebook-like.png';
+import { Link } from 'react-router-dom';
 
 const images: string[] = [
   boykid,
@@ -53,8 +54,10 @@ const Home = () => {
       <div className="news">
             <h2>SWIM & HAVE FUN</h2>
             <p>Super Fun Baby and Toddler Swimming Lessons | Nurturing Early Swimmers with Professional Care</p>
-            <p><a href="#">Join Now</a></p> {/* 要改成Link還有要跳轉到哪裡還沒做  */}
+            <p><Link to="/login">Join Now</Link></p>
       </div>
+
+      
 
       <div className='sixphotos'>
         {images.map((src, index) => (

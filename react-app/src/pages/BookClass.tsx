@@ -124,12 +124,13 @@ const BookClass: React.FC = () => {
         <div key={course.CourseID} className="card">
           <h3>{course.CourseName}</h3>
           <div className="card-info">
-            <p>Location: {course.Location}</p>
-            <p>Start Date: {course.StartDate}</p>
-            <p>Time Slot: {course.TimeSlot}</p>
-            <p>Day of Week: {course.DayOfWeek}</p>
-            <p>Coach: {course.CoachFirstName} {course.CoachLastName}</p>
-            <p>Available Spots: {course.AvailableSpots}</p>
+            <p>Location : {course.Location}</p>
+            <p>Start Date : {course.StartDate}</p>
+            <p>Time Slot : {course.TimeSlot}</p>
+            <p>Day of Week : {course.DayOfWeek}</p>
+            <p>Coach : {course.CoachFirstName} {course.CoachLastName}</p>
+            <p>Available Spots : {course.AvailableSpots}</p>
+            <p>Total Weeks : {course.TotalWeeks} </p>
           </div>
           <button onClick={() => openModal(course.CourseID)}>Book this course</button>
         </div>

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import axios from "axios";
 
@@ -7,72 +7,94 @@ const Register = () => {
     username: "",
     email: "",
     password: "",
+    firstName: "",
+    lastName: "",
+    points: 10 // 默認為 10
   });
+
+  const navigate = useNavigate(); // 使用 useNavigate 來處理跳轉
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3033/api/auth/register", inputs)
-      console.log(res)
+      const res = await axios.post("http://localhost:3033/api/auth/register", inputs);
+      console.log(res);
+      alert("Your account has been successfully registered!"); // 顯示註冊成功通知
+      navigate("/login"); // 跳轉到 /dashboard
     } catch (err) {
-      console.log(err)
+      if (axios.isAxiosError(err)) {
+        console.error("Axios error:", err.response?.data || err.message);
+      } else {
+        console.error("Unexpected error:", err);
+      }
     }
   };
-  
-
-  console.log(inputs); // output:{username: '123', email: 'email', password: 'pass'}
 
   return (
-
     <div className="loginpage">
       <div className="wrapper">
         <h1>Register</h1>
-        <form id="loginForm"> {/* 不需要 onSubmit */}
+        <form id="loginForm" onSubmit={handleSubmit}>
           <div className="login-box">
-            <input 
-              type="text" 
-              placeholder="Username" 
-              id="loginUsername" 
-              name="username" 
-              onChange={handleChange} 
-              required 
+            <input
+              type="text"
+              placeholder="Username"
+              id="loginUsername"
+              name="username"
+              onChange={handleChange}
+              required
             />
             <i className='bx bxs-user'></i>
           </div>
           <div className="login-box">
-            <input 
-              type="password" 
-              placeholder="Password" 
-              id="loginPassword" 
-              name="password" 
-              onChange={handleChange} 
-              required 
+            <input
+              type="text"
+              placeholder="First Name"
+              id="firstName"
+              name="firstName"
+              onChange={handleChange}
+              required
             />
-            <i className='bx bxs-lock-alt'></i>
+            <i className='bx bxs-user'></i>
           </div>
           <div className="login-box">
-            <input 
-              type="email" 
-              placeholder="Email" 
-              id="loginEmail" 
-              name="email" 
-              onChange={handleChange} 
-              required 
+            <input
+              type="text"
+              placeholder="Last Name"
+              id="lastName"
+              name="lastName"
+              onChange={handleChange}
+              required
+            />
+            <i className='bx bxs-user'></i>
+          </div>
+          <div className="login-box">
+            <input
+              type="email"
+              placeholder="Email"
+              id="loginEmail"
+              name="email"
+              onChange={handleChange}
+              required
             />
             <i className='bx bxs-envelope'></i>
           </div>
-          <div className="remember-forgot">
-            <label>
-              <input type="checkbox" /> Remember me
-            </label>
-            <a href="#">Forgot password?</a>
-          </div>
-          <button onClick={handleSubmit} className="btn">Register</button>
-          
+          <div className="login-box">
+            <input
+              type="password"
+              placeholder="Password"
+              id="loginPassword"
+              name="password"
+              onChange={handleChange}
+              required
+            />
+            <i className='bx bxs-lock-alt'></i>
+          </div>          
+          <button type="submit" className="btn">Register</button>
           <div className="register-link">
             <p>Do you have an account? <Link to="/login">Login</Link></p>
           </div>

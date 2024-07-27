@@ -97,13 +97,13 @@ const MySchedule: React.FC = () => {
       </label>
       {schedule.length === 0 ? (
         <div>
-          <p>目前沒有預計課程</p>
-          <a href="/dashboard/book-class">我要訂課</a>
+          <p>Currently, there are no scheduled classes.</p>
+          <a href="/dashboard/book-class">Book courses here</a>
         </div>
       ) : (
         schedule.map((session, index) => (
           <div key={index} className="card">
-            <h3>{session.CourseName}</h3>
+            <h3>{session.CourseName} - Week {session.WeekNumber} </h3>
             <div className="card-info">
               <p>
                 Student: {session.StudentFirstName} {session.StudentLastName}

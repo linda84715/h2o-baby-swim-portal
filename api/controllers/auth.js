@@ -78,3 +78,12 @@ export const logout = (req, res) => {
     res.status(200).json({ message: "Logout successful." });
   });
 };
+
+
+export const checkAuth = (req, res) => {
+  if (req.session && req.session.userId) {
+    res.status(200).json({ isAuthenticated: true, userId: req.session.userId });
+  } else {
+    res.status(200).json({ isAuthenticated: false });
+  }
+};
