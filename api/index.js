@@ -1,32 +1,30 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import authRoutes from "./routes/auth.js";
-import userRoutes from "./routes/users.js";
-import postRoutes from "./routes/posts.js";
+import authRoutes from './routes/auth.js';
+import userRoutes from './routes/users.js';
+import postRoutes from './routes/posts.js';
 import cors from 'cors';
 import session from 'express-session';
-import MySQLStore from 'express-mysql-session'; // 使用 express-mysql-session 來存儲 session 到 MySQL
-import { db } from './db.js'; // 確保導入數據庫連接
+import MySQLStore from 'express-mysql-session';
+import { db } from './db.js';
 import progressRoutes from './routes/progress.js';
+import mysql from 'mysql2';
+import bcrypt from 'bcryptjs';
 
 const app = express();
 
+app.use(bodyParser.json());
 
-
-app.use(bodyParser.json()); // 解析 JSON 格式的請求體
-
-// 設置 CORS 中間件，允許來自前端的跨域請求
 app.use(cors({
-  origin: 'http://localhost:5173', // 前端地址
-  credentials: true // 允許攜帶 cookie
+  origin: 'http://localhost:5173',
+  credentials: true
 }));
 
 const MySQLStoreSession = MySQLStore(session);
 
-// 配置 session 中間件
 const sessionStore = new MySQLStoreSession({
   expiration: 10800000,
-  createDatabaseTable: true, // 自動創建 session 表
+  createDatabaseTable: true,
   schema: {
     tableName: 'sessions',
     columnNames: {
@@ -35,7 +33,7 @@ const sessionStore = new MySQLStoreSession({
       data: 'data'
     }
   },
-  connectionLimit: 1, // 防止創建多個連接
+  connectionLimit: 1,
   host: 'localhost',
   port: 3306,
   user: 'root',
@@ -44,28 +42,25 @@ const sessionStore = new MySQLStoreSession({
 });
 
 app.use(session({
-  key: 'session_cookie_name', // 設置 cookie 的名稱
-  secret: 'your_secret_key', // 用於加密 session ID 的 secret
+  key: 'session_cookie_name',
+  secret: 'your_secret_key',
   store: sessionStore,
-  resave: false, // 不會在每次請求時強制保存 session
-  saveUninitialized: false, // 只有在 session 有修改時才會保存
+  resave: false,
+  saveUninitialized: false,
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24 // 設置 cookie 的過期時間（24 小時）
+    maxAge: 1000 * 60 * 60 * 24
   }
 }));
 
-// 路由設置
-app.use("/api/auth", authRoutes); // 設置 auth 路由
-app.use("/api/users", userRoutes); // 設置 users 路由
-app.use("/api/posts", postRoutes); // 設置 posts 路由
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
 app.use('/api/progress', progressRoutes);
 
-// 測試路由
-app.get("/test", (req, res) => {
-  res.json("It works!");
+app.get('/test', (req, res) => {
+  res.json('It works!');
 });
 
-// 設置伺服器監聽的端口
 const port = 3033;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
