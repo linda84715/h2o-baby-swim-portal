@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
+import { API } from '../../config.tsx';
+
 // 設定 Modal 的 root 元素（通常在應用初始化時設置一次）
 Modal.setAppElement("#root");
 axios.defaults.withCredentials = true;
@@ -39,7 +41,7 @@ const BookClass: React.FC = () => {
   // 獲取課程和學生數據
   useEffect(() => {
     axios
-      .get("http://localhost:3033/api/users/available-courses", {
+      .get(API.USERS.GET_AVAILABLE_COURSES, {
         withCredentials: true,
       })
       .then((response) => {
@@ -52,7 +54,7 @@ const BookClass: React.FC = () => {
       });
 
     axios
-      .get("http://localhost:3033/api/users/students", {
+      .get(API.USERS.GET_STUDENTS, {
         withCredentials: true,
       })
       .then((response) => {
@@ -91,12 +93,12 @@ const BookClass: React.FC = () => {
       return;
     }
 
-    axios.post('http://localhost:3033/api/users/bookCourse', { courseId: selectedCourse, studentId: selectedStudent }, { withCredentials: true })
+    axios.post(API.USERS.BOOK_COURSE, { courseId: selectedCourse, studentId: selectedStudent }, { withCredentials: true })
       .then(response => {
         window.alert(response.data.message); // 使用 window.alert 顯示成功消息
         closeModal();
         // Reload the available courses
-        axios.get('http://localhost:3033/api/users/available-courses', { withCredentials: true })
+        axios.get('API.USERS.GET_AVAILABLE_COURSES', { withCredentials: true })
           .then(response => {
             setCourses(response.data);
           })

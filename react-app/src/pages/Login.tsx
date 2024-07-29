@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import axios from "axios";
+import { API } from '../../config.tsx';
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -15,11 +16,11 @@ const Login = () => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // 處理表單提交
+  // 處理表單提交 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3033/api/auth/login", inputs, {
+      await axios.post(API.AUTH.LOGIN, inputs, {
         withCredentials: true, // 包含 cookie 以便後端可以設置 session
       });
       navigate("/dashboard"); // 登錄成功後跳轉到首頁

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { API } from '../../config'; // 請確保路徑正確
 
 interface Student {
   StudentID: number;
@@ -33,7 +34,7 @@ const KidInfo: React.FC = () => {
   });
 
   useEffect(() => {
-    axios.get('http://localhost:3033/api/users/students', { withCredentials: true })
+    axios.get(API.USERS.GET_STUDENTS, { withCredentials: true })
       .then(response => {
         const formattedStudents = response.data.map((student: Student) => ({
           ...student,
@@ -58,7 +59,7 @@ const KidInfo: React.FC = () => {
         ...editingStudent,
         Birthdate: parseDate(editingStudent.Birthdate)
       };
-      axios.put(`http://localhost:3033/api/users/students/${editingStudent.StudentID}`, updatedStudent, { withCredentials: true })
+      axios.put(API.USERS.UPDATE_STUDENT(editingStudent.StudentID), updatedStudent, { withCredentials: true })
         .then(response => {
           setStudents(students.map(student => student.StudentID === editingStudent.StudentID ? { ...editingStudent, Birthdate: formatDate(editingStudent.Birthdate) } : student));
           setEditingStudent(null);
@@ -74,7 +75,7 @@ const KidInfo: React.FC = () => {
       ...newStudent,
       Birthdate: parseDate(newStudent.Birthdate)
     };
-    axios.post('http://localhost:3033/api/users/students', newStudentData, { withCredentials: true })
+    axios.post(API.USERS.ADD_STUDENT, newStudentData, { withCredentials: true })
       .then(response => {
         setStudents([...students, { ...response.data, Birthdate: formatDate(response.data.Birthdate) }]);
         setNewStudent({ StudentID: 0, FirstName: '', LastName: '', Birthdate: '' });

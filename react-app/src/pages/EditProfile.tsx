@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { API } from '../../config.tsx';
+
 
 interface UserProfile {
   firstname: string;
@@ -18,7 +20,7 @@ const EditProfile: React.FC = () => {
 
   useEffect(() => {
     // 獲取會員資料
-    axios.get('http://localhost:3033/api/users/userinfo', { withCredentials: true })
+    axios.get(API.USERS.GET_USERINFO, { withCredentials: true })
       .then(response => {
         setUserProfile(response.data);
         setUpdatedProfile(response.data);
@@ -39,7 +41,7 @@ const EditProfile: React.FC = () => {
 
   const handleSave = () => {
     if (updatedProfile) {
-      axios.put('http://localhost:3033/api/users/profile', updatedProfile, { withCredentials: true })
+      axios.put(API.USERS.UPDATE_PROFILE, updatedProfile, { withCredentials: true })
         .then(response => {
           setUserProfile(updatedProfile);
           setEditing(false);

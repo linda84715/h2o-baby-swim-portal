@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import StudentButtons from '../components/StudentButtons';
 import Milestones from '../components/Milestones';
 import ProgressTable from '../components/ProgressTable';
+import { API } from '../../config'; // 確保路徑正確
 
 const MyProgress = () => {
     const [userId, setUserId] = useState(null);
@@ -13,7 +14,7 @@ const MyProgress = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:3033/api/users/userinfo')
+        axios.get(API.USERS.GET_USERINFO)
             .then(res => {
                 setUserId(res.data.id);
             })
@@ -22,7 +23,7 @@ const MyProgress = () => {
 
     useEffect(() => {
         if (userId) {
-            axios.get('http://localhost:3033/api/users/students')
+            axios.get(API.USERS.GET_STUDENTS)
                 .then(res => {
                     setStudents(res.data);
                     if (res.data.length > 0) {
@@ -35,7 +36,7 @@ const MyProgress = () => {
 
     useEffect(() => {
         if (selectedStudent) {
-            axios.get(`http://localhost:3033/api/progress/${selectedStudent}`)
+            axios.get(API.PROGRESS.GET_STUDENT(selectedStudent))
                 .then(res => setProgressData(res.data))
                 .catch(err => console.error(err));
         }

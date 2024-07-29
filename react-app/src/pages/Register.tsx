@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import axios from "axios";
+import { API } from '../../config.tsx';
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -21,7 +22,7 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3033/api/auth/register", inputs);
+      const res = await axios.post(API.AUTH.REGISTER, inputs);
       console.log(res);
       alert("Your account has been successfully registered!"); // 顯示註冊成功通知
       navigate("/login"); // 跳轉到 /dashboard

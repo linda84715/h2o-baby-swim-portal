@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { API } from '../../config.tsx';
 
 const UserInfo = () => {
   // 定義狀態變數，用於存儲使用者資訊
@@ -10,7 +11,7 @@ const UserInfo = () => {
     const fetchUserInfo = async () => {
       try {
         // 發送 GET 請求到後端 API 來獲取使用者資訊
-        const res = await axios.get('http://localhost:3033/api/users/userinfo', { withCredentials: true });
+        const res = await axios.get(API.USERS.GET_INFO, { withCredentials: true });
         // 將獲取到的使用者資訊設置到狀態變數中
         setUser(res.data); //將user 的值更新為 [firstname: 'Linda', lastname: 'Lin']
       } catch (err) {

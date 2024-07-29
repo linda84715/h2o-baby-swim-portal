@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Logo from '../images/logo.png';
+import { API } from '../../config.tsx';
+
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ const Navbar = () => {
 
   useEffect(() => {
     // 檢查使用者是否已登錄
-    fetch('http://localhost:3033/api/auth/check-auth', {
+    fetch(API.AUTH.CHECK_AUTH, {
       method: 'GET',
       credentials: 'include' // 確保傳遞cookie
     })

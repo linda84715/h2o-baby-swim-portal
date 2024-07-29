@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API } from "../../config";
 
 interface CourseSession {
   StudentFirstName: string;
@@ -28,7 +29,7 @@ const MySchedule: React.FC = () => {
   useEffect(() => {
     // 獲取所有學生資料
     axios
-      .get("http://localhost:3033/api/users/students", {
+      .get(API.USERS.GET_SCHEDULE, {
         withCredentials: true,
       })
       .then((response) => {
@@ -40,7 +41,7 @@ const MySchedule: React.FC = () => {
 
     // 獲取課表
     axios
-      .get("http://localhost:3033/api/users/schedule", {
+      .get(API.USERS.GET_SCHEDULE, {
         withCredentials: true,
       })
       .then((response) => {
@@ -57,11 +58,10 @@ const MySchedule: React.FC = () => {
     const studentID = e.target.value === "all" ? null : Number(e.target.value);
     setSelectedStudent(studentID);
 
-    const url =
-      studentID === null
-        ? "http://localhost:3033/api/users/schedule"
-        : `http://localhost:3033/api/users/schedule?studentID=${studentID}`;
-
+    const url = studentID === null
+    ? API.USERS.GET_SCHEDULE
+    : `${API.USERS.GET_SCHEDULE}?studentID=${studentID}`;
+    
     axios
       .get(url, { withCredentials: true })
       .then((response) => {
