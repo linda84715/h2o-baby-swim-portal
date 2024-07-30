@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API } from '../../config.tsx';
+import { API } from '../../config';
 
 const UserInfo = () => {
   // 定義狀態變數，用於存儲使用者資訊

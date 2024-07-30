@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
-import { API } from '../../config.tsx';
+import { API } from '../../config';
 
 // 設定 Modal 的 root 元素（通常在應用初始化時設置一次）
 Modal.setAppElement("#root");

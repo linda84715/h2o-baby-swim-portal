@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import axios from "axios";
-import { API } from '../../config.tsx';
+import { API } from '../../config';
 
 const Login = () => {
   const [inputs, setInputs] = useState({

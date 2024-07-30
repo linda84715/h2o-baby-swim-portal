@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API } from '../../config.tsx';
+import { API } from '../../config';
 
 
 interface UserProfile {

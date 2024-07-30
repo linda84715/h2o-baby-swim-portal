@@ -5,9 +5,10 @@ export const API = {
     LOGIN: `${API_BASE_URL}/auth/login`,
     REGISTER: `${API_BASE_URL}/auth/register`,
     LOGOUT: `${API_BASE_URL}/auth/logout`,
+    CHECK_AUTH: `${API_BASE_URL}/auth/check-auth`
   },
   USERS: {
-    GET_INFO: `${API_BASE_URL}/users/userinfo`,
+    GET_USERINFO: `${API_BASE_URL}/users/userinfo`,
     GET_SCHEDULE: `${API_BASE_URL}/users/schedule`,
     GET_AVAILABLE_COURSES: `${API_BASE_URL}/users/available-courses`,
     BOOK_COURSE: `${API_BASE_URL}/users/bookCourse`,
