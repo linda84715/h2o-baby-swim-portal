@@ -11,8 +11,8 @@ router.get("/schedule", getSchedule);
 router.get("/available-courses", getAvailableCourses);
 router.post("/bookCourse", bookCourse);
 
-router.get("/students", getStudentsList);
-router.post('/students', addStudent);
+router.get("/get-students", getStudentsList);
+router.post('/add-students', addStudent);
 router.put('/students/:id', updateStudent); //更新特定用戶資料
 
 router.put('/profile', updateUserProfile);
