@@ -1,2 +1,24 @@
+
+
+# macOS
+.DS_Store
+
+# Node.js
 /api/node_modules/
 
+# Logs
+*.log
+
+# Editor and IDE
+.vscode/
+.idea/
+
+# Environment variables
+
+# Temporary files
+tmp/
+build/
+dist/
+
+# SQL backup files
+*.sql
