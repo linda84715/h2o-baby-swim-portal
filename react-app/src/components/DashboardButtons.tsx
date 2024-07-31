@@ -6,7 +6,7 @@ const DashboardButtons = () => {
       <button><Link to="/dashboard/schedule">My Schedule</Link></button>
       <button><Link to="/dashboard/book-class">Book Course</Link></button>
       <button><Link to="/dashboard/edit-profile">Member info</Link></button>
-      <button><Link to="/dashboard/kidinfo">Kid info</Link></button>
+      <button><Link to="/dashboard/kidinfo">Kid info / Register Kid</Link></button>
     </div>
   );
 };
