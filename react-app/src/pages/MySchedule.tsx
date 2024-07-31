@@ -3,6 +3,7 @@ import axios from "axios";
 import { API } from "../../config";
 
 interface CourseSession {
+  SessionID: number;
   StudentFirstName: string;
   StudentLastName: string;
   CourseName: string;
@@ -29,7 +30,7 @@ const MySchedule: React.FC = () => {
   useEffect(() => {
     // 獲取所有學生資料
     axios
-      .get(API.USERS.GET_SCHEDULE, {
+      .get(API.USERS.GET_STUDENTS, {
         withCredentials: true,
       })
       .then((response) => {
