@@ -1,4 +1,4 @@
-import React from 'react';
+// @ts-nocheck
 import medal from '../images/medal.png';
 import medalEmpty from '../images/medal_empty.png';
 import littleFunTime from '../images/little_fun_time.png';

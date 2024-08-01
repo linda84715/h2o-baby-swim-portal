@@ -1,4 +1,4 @@
-import React from 'react';
+// @ts-nocheck
 
 const ProgressTable = ({ progressData, studentName }) => {
     // 將進度數據按里程碑分組

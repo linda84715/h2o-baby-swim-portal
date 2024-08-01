@@ -1,10 +1,4 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-  Navigate
-} from "react-router-dom";
-
+import { createHashRouter, RouterProvider, Outlet, Navigate } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -22,7 +16,7 @@ const Layout = () => {
   return (
     <>
       <Navbar />
-      <Outlet /> {/* react-router-dom 提供的組件，用於渲染嵌套路由對應的組件。 */}
+      <Outlet />
       <Footer />
     </>
   );
@@ -32,70 +26,63 @@ const DashboardLayout = () => {
   return (
     <>
       <Navbar />
-      <Dashboard /> {/* Dashboard 主要顯示內容 */}
-      {/*<Outlet /> 用於渲染嵌套路由對應的組件 */}
+      <Dashboard />
+      <Outlet />
     </>
   );
 };
 
-// 創建一個路由器，並配置兩個路由：
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Home />,
       },
       {
-        path: "/Home",
+        path: "home",
         element: <Home />,
       },
-    ],
-  },
-  {
-    path: "/myprogress",
-    element: (
-      <>
-        <Navbar />
-        <MyProgress />
-      </>
-    ), // 新增的路由配置，包含 Navbar 但不包含 Footer
-  },
-  {
-    path: "/Register",
-    element: <Register />,
-  },
-  {
-    path: "/Login",
-    element: <Login />,
-  },
-  {
-    path: "/dashboard",
-    element: <DashboardLayout />, // 使用 DashboardLayout 來包含 Dashboard 頁面
-    children: [
       {
-        path: "/dashboard",
-        element: <Navigate to="/dashboard/schedule" />, // 預設重定向到我的課表
+        path: "myprogress",
+        element: <MyProgress />,
       },
       {
-        path: "schedule",
-        element: <MySchedule />,
+        path: "register",
+        element: <Register />,
       },
       {
-        path: "book-class",
-        element: <BookClass />,
+        path: "login",
+        element: <Login />,
       },
       {
-        path: "edit-profile",
-        element: <EditProfile />,
+        path: "dashboard",
+        element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: <Navigate to="schedule" replace />,
+          },
+          {
+            path: "schedule",
+            element: <MySchedule />,
+          },
+          {
+            path: "book-class",
+            element: <BookClass />,
+          },
+          {
+            path: "edit-profile",
+            element: <EditProfile />,
+          },
+          {
+            path: "kidinfo",
+            element: <KidInfo />,
+          },
+        ],
       },
-      {
-        path: "kidinfo",
-        element: <KidInfo />,
-      },
-
     ],
   },
 ]);

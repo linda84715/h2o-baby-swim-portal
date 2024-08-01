@@ -16,9 +16,14 @@ const app = express();
 app.use(bodyParser.json()); // 解析 JSON 格式的請求體
 
 // 設置 CORS 中間件，允許來自前端的跨域請求
-app.use(cors({
+/*app.use(cors({
   origin: 'http://localhost:5173', // 前端地址
   credentials: true // 允許攜帶 cookie
+}));*/
+
+app.use(cors({
+  origin: 'https://linda84715.github.io/h2o-baby-swim-portal',
+  credentials: true
 }));
 
 const MySQLStoreSession = MySQLStore(session);
@@ -65,8 +70,7 @@ app.get("/test", (req, res) => {
   res.json("It works!");
 });
 
-// 設置伺服器監聽的端口
-const port = 3033;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
