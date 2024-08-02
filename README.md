@@ -26,12 +26,20 @@ To run this project locally, follow these steps:
 4. Start the development server:npm run dev
 5. Open your browser and visit `http://localhost:5173`
 6. Start the back-end server: cd api, npm install, node index.js
+7. Test your server on `http://localhost:3001/test`
 
 ## Deployment
 
 The frontend of this project is deployed on GitHub Pages.
 
-To deploy the latest version, run:npm run deploy
+To deploy the latest version, cd react-app, run:npm run deploy.
+
+Troubleshooting:
+cd react-app
+rm -rf node_modules
+rm -rf dist
+npm install
+npm run deploy
 
 ## Contact
 
