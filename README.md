@@ -35,11 +35,11 @@ The frontend of this project is deployed on GitHub Pages.
 To deploy the latest version, cd react-app, run:npm run deploy.
 
 Troubleshooting:
-cd react-app
-rm -rf node_modules
-rm -rf dist
-npm install
-npm run deploy
+- cd react-app
+- rm -rf node_modules
+- rm -rf dist
+- npm install
+- npm run deploy
 
 ## Contact
 
