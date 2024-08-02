@@ -22,7 +22,7 @@ app.use(bodyParser.json()); // 解析 JSON 格式的請求體
 }));*/
 
 app.use(cors({
-  origin: 'https://linda84715.github.io/h2o-baby-swim-portal',
+  origin: 'https://linda84715.github.io',
   credentials: true
 }));
 
@@ -55,7 +55,9 @@ app.use(session({
   resave: false, // 不會在每次請求時強制保存 session
   saveUninitialized: false, // 只有在 session 有修改時才會保存
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24 // 設置 cookie 的過期時間（24 小時）
+    maxAge: 1000 * 60 * 60 * 24, // 設置 cookie 的過期時間（24 小時）
+        secure: process.env.NODE_ENV === 'production',
+    sameSite: 'None'
   }
 }));
 
