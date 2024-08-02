@@ -21,15 +21,12 @@ H2O Baby Swim Portal is a web application designed for infant and toddler swimmi
 ## Local Development
 
 To run this project locally, follow these steps:
-1. Clone the repository: git clone https://github.com/linda84715/h2o-baby-swim-portal.git
-                         cd h2o-baby-swim-portal
+1. Clone the repository: git clone https://github.com/linda84715/h2o-baby-swim-portal.git , cd h2o-baby-swim-portal
 
-2. Install dependencies:cd react-app
-                        npm install
+2. Install dependencies:cd react-app , npm install
    
 4. Start the development server:npm run dev
-5. 
-6. Open your browser and visit `http://localhost:5173`
+5. Open your browser and visit `http://localhost:5173`
 
 ## Deployment
 
