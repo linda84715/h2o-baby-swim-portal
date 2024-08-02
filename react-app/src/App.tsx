@@ -8,7 +8,7 @@ import './style.scss';
 import Dashboard from './pages/Dashboard';
 import MySchedule from './pages/MySchedule';
 import BookClass from './pages/BookClass';
-import EditProfile from './pages/EditProfile'
+import EditProfile from './pages/EditProfile';
 import KidInfo from "./pages/KidInfo";
 import MyProgress from "./pages/MyProgress";
 
@@ -27,7 +27,6 @@ const DashboardLayout = () => {
     <>
       <Navbar />
       <Dashboard />
-      <Outlet />
     </>
   );
 };
@@ -49,39 +48,39 @@ const router = createHashRouter([
         path: "myprogress",
         element: <MyProgress />,
       },
+    ],
+  },
+  {
+    path: "register",
+    element: <Register />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "dashboard",
+    element: <DashboardLayout />,
+    children: [
       {
-        path: "register",
-        element: <Register />,
+        index: true,
+        element: <Navigate to="schedule" replace />,
       },
       {
-        path: "login",
-        element: <Login />,
+        path: "schedule",
+        element: <MySchedule />,
       },
       {
-        path: "dashboard",
-        element: <DashboardLayout />,
-        children: [
-          {
-            index: true,
-            element: <Navigate to="schedule" replace />,
-          },
-          {
-            path: "schedule",
-            element: <MySchedule />,
-          },
-          {
-            path: "book-class",
-            element: <BookClass />,
-          },
-          {
-            path: "edit-profile",
-            element: <EditProfile />,
-          },
-          {
-            path: "kidinfo",
-            element: <KidInfo />,
-          },
-        ],
+        path: "book-class",
+        element: <BookClass />,
+      },
+      {
+        path: "edit-profile",
+        element: <EditProfile />,
+      },
+      {
+        path: "kidinfo",
+        element: <KidInfo />,
       },
     ],
   },
