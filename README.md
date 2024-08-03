@@ -8,6 +8,8 @@ H2O Baby Swim Portal is a web application designed for infant and toddler swimmi
 - Learning progress tracking
 - Personal profile management
 - Responsive design for multiple devices
+- Manage Multiple Children Profiles
+- Track Multiple Children Learning Progress
 
 ## Tech Stack
 - Frontend: React.js, TypeScript, Vite
