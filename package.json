@@ -1,0 +1,12 @@
+{
+  "name": "projectcode",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run start-api\" \"npm run start-react\"",
+    "start-api": "cd api && nodemon index.js",
+    "start-react": "cd react-app && npm run dev"
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
