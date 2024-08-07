@@ -30,6 +30,10 @@ To run this project locally, follow these steps:
 6. Start the back-end server: cd api, npm install, nodemon index.js
 7. To test your server, navigate to `http://localhost:3001/test` in your browser. You should see the message "It works".
 
+## MYSQL
+mysql database可匯入的資料檔名是 Dump20240807.sql
+帳號：root
+密碼：queenmary
 
 ## Contact
 
