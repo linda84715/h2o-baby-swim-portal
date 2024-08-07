@@ -28,7 +28,7 @@ To run this project locally, follow these steps:
 4. Start the development server:npm run dev
 5. Open your browser and visit `http://localhost:5173`
 6. Start the back-end server: cd api, npm install, nodemon index.js
-7. Test your server on `http://localhost:3001/test`
+7. To test your server, navigate to `http://localhost:3001/test` in your browser. You should see the message "It works".
 
 
 ## Contact
