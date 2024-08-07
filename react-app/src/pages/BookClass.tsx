@@ -110,6 +110,8 @@ const BookClass: React.FC = () => {
         console.error('There was an error booking the course!', error);
         window.alert('There was an error booking the course.'); // 使用 window.alert 顯示錯誤消息
       });
+      // 加入頁面重定向
+      navigate('/dashboard/schedule'); // 假設你希望跳轉到 "/confirmation" 頁面
   };
 
   if (loading) {
