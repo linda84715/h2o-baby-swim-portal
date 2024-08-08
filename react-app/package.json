@@ -39,5 +39,6 @@
     "gh-pages": "^6.1.1",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
-  }
+  },
+  "proxy": "https://9fc0-5-151-177-140.ngrok-free.app"
 }

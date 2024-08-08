@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://9fc0-5-151-177-140.ngrok-free.app/api';
 
 export const API = {
   AUTH: {

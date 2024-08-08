@@ -35,7 +35,9 @@ const KidInfo: React.FC = () => {
   });
 
   useEffect(() => {
-    axios.get(API.USERS.GET_STUDENTS, { withCredentials: true })
+    axios.get(API.USERS.GET_STUDENTS, { withCredentials: true,headers: {
+      'ngrok-skip-browser-warning': 'true'
+    } })
       .then(response => {
         const formattedStudents = response.data.map((student: Student) => ({
           ...student,

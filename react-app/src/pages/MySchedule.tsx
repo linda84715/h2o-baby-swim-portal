@@ -32,6 +32,9 @@ const MySchedule: React.FC = () => {
     axios
       .get(API.USERS.GET_STUDENTS, {
         withCredentials: true,
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
       })
       .then((response) => {
         setStudents(response.data);
@@ -44,6 +47,9 @@ const MySchedule: React.FC = () => {
     axios
       .get(API.USERS.GET_SCHEDULE, {
         withCredentials: true,
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
       })
       .then((response) => {
         setSchedule(response.data);

@@ -21,7 +21,8 @@ const EditProfile: React.FC = () => {
 
   useEffect(() => {
     // 獲取會員資料
-    axios.get(API.USERS.GET_USERINFO, { withCredentials: true })
+    axios.get(API.USERS.GET_USERINFO, { withCredentials: true,headers: {
+      'ngrok-skip-browser-warning': 'true'}})
       .then(response => {
         setUserProfile(response.data);
         setUpdatedProfile(response.data);

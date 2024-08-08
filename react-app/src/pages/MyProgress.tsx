@@ -15,7 +15,12 @@ const MyProgress = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(API.USERS.GET_USERINFO)
+        axios.get(API.USERS.GET_USERINFO, {
+            withCredentials: true,
+            headers: {
+              'ngrok-skip-browser-warning': 'true'
+            }
+          })
             .then(res => {
                 setUserId(res.data.id);
             })
@@ -24,7 +29,12 @@ const MyProgress = () => {
 
     useEffect(() => {
         if (userId) {
-            axios.get(API.USERS.GET_STUDENTS)
+            axios.get(API.USERS.GET_STUDENTS, {
+                withCredentials: true,
+                headers: {
+                  'ngrok-skip-browser-warning': 'true'
+                }
+              })
                 .then(res => {
                     setStudents(res.data);
                     if (res.data.length > 0) {
@@ -37,7 +47,12 @@ const MyProgress = () => {
 
     useEffect(() => {
         if (selectedStudent) {
-            axios.get(API.PROGRESS.GET_STUDENT(selectedStudent))
+            axios.get(API.PROGRESS.GET_STUDENT(selectedStudent), {
+                withCredentials: true,
+                headers: {
+                  'ngrok-skip-browser-warning': 'true'
+                }
+              })
                 .then(res => setProgressData(res.data))
                 .catch(err => console.error(err));
         }

@@ -11,7 +11,10 @@ const Navbar = () => {
     // 檢查使用者是否已登錄
     fetch(API.AUTH.CHECK_AUTH, {
       method: 'GET',
-      credentials: 'include' // 確保傳遞cookie
+      credentials: 'include', // 確保傳遞cookie
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
     })
     .then(response => response.json())
     .then(data => {

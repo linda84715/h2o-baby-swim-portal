@@ -43,6 +43,9 @@ const BookClass: React.FC = () => {
     axios
       .get(API.USERS.GET_AVAILABLE_COURSES, {
         withCredentials: true,
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
       })
       .then((response) => {
         setCourses(response.data);
@@ -56,6 +59,9 @@ const BookClass: React.FC = () => {
     axios
       .get(API.USERS.GET_STUDENTS, {
         withCredentials: true,
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
       })
       .then((response) => {
         setStudents(response.data);
@@ -93,7 +99,9 @@ const BookClass: React.FC = () => {
       return;
     }
 
-    axios.post(API.USERS.BOOK_COURSE, { courseId: selectedCourse, studentId: selectedStudent }, { withCredentials: true })
+    axios.post(API.USERS.BOOK_COURSE, { courseId: selectedCourse, studentId: selectedStudent }, { withCredentials: true,headers: {
+      'ngrok-skip-browser-warning': 'true'
+    }})
       .then(response => {
         window.alert(response.data.message); // 使用 window.alert 顯示成功消息
         closeModal();
