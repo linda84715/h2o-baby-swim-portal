@@ -14,10 +14,10 @@ export const API = {
     BOOK_COURSE: `${API_BASE_URL}/users/bookCourse`,
     GET_STUDENTS: `${API_BASE_URL}/users/get-students`,
     ADD_STUDENT: `${API_BASE_URL}/users/add-students`,
-    UPDATE_STUDENT: (id) => `${API_BASE_URL}/users/students/${id}`,
+    UPDATE_STUDENT: (id: string) => `${API_BASE_URL}/users/students/${id}`,
     UPDATE_PROFILE: `${API_BASE_URL}/users/profile`,
   },
   PROGRESS: {
-    GET_STUDENT: (studentId) => `${API_BASE_URL}/progress/${studentId}`,
+    GET_STUDENT: (studentId: string) => `${API_BASE_URL}/progress/${studentId}`,
   },
 };

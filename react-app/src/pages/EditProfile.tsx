@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API } from '../../config';
-
 
 interface UserProfile {
   firstname: string;
@@ -32,8 +31,8 @@ const EditProfile: React.FC = () => {
       });
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => { 
+    const { name, value } = e.target; // `name` 屬性標識這個輸入框為 'firstname'
     if (updatedProfile) {
       setUpdatedProfile({ ...updatedProfile, [name]: value });
     }
@@ -42,7 +41,7 @@ const EditProfile: React.FC = () => {
   const handleSave = () => {
     if (updatedProfile) {
       axios.put(API.USERS.UPDATE_PROFILE, updatedProfile, { withCredentials: true })
-        .then(response => {
+        .then(() => {
           setUserProfile(updatedProfile);
           setEditing(false);
         })
@@ -69,7 +68,7 @@ const EditProfile: React.FC = () => {
             First Name:
             <input
               type="text"
-              name="firstName"
+              name="firstname" // `name` 屬性標識這個輸入框為 'lastname'
               value={updatedProfile?.firstname || ''}
               onChange={handleInputChange}
             />
@@ -78,7 +77,7 @@ const EditProfile: React.FC = () => {
             Last Name:
             <input
               type="text"
-              name="lastName"
+              name="lastname"
               value={updatedProfile?.lastname || ''}
               onChange={handleInputChange}
             />

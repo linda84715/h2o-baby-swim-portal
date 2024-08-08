@@ -1,6 +1,16 @@
-import React from 'react';
+interface Student {
+    StudentID: number;
+    FirstName: string;
+    LastName: string;
+}
 
-const StudentButtons = ({ students, onSelectStudent, selectedStudent }) => {
+interface StudentButtonsProps {
+    students: Student[];
+    onSelectStudent: (studentID: number) => void;
+    selectedStudent: number;
+}
+
+const StudentButtons: React.FC<StudentButtonsProps> = ({ students, onSelectStudent, selectedStudent }) => {
     return (
         <div className="student-buttons">
             {students.map(student => (

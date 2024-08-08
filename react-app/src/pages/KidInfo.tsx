@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API } from '../../config'; // 請確保路徑正確
 
@@ -59,8 +59,8 @@ const KidInfo: React.FC = () => {
         ...editingStudent,
         Birthdate: parseDate(editingStudent.Birthdate)
       };
-      axios.put(API.USERS.UPDATE_STUDENT(editingStudent.StudentID), updatedStudent, { withCredentials: true })
-        .then(response => {
+      axios.put(`${API.USERS.UPDATE_STUDENT}/${editingStudent.StudentID}`, updatedStudent, { withCredentials: true })
+        .then(() => {
           setStudents(students.map(student => student.StudentID === editingStudent.StudentID ? { ...editingStudent, Birthdate: formatDate(editingStudent.Birthdate) } : student));
           setEditingStudent(null);
         })
