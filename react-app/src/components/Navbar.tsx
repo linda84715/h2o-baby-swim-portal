@@ -30,9 +30,12 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = () => {
-    fetch('http://localhost:3033/api/auth/logout', {
+    fetch(API.AUTH.LOGOUT, {
       method: 'POST',
-      credentials: 'include' // 確保傳遞cookie
+      credentials: 'include',// 確保傳遞cookie
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
     })
     .then(response => response.json())
     .then(data => {
