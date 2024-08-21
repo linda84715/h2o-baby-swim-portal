@@ -18,7 +18,6 @@ H2O Baby Swim Portal is a web application designed for infant and toddler swimmi
 - Styling: SCSS, Bootstrap
 - Routing: React Router
 - HTTP Client: Axios
-- Deployment: (TBD)
 
 ## Local Development
 
@@ -31,9 +30,7 @@ To run this project locally, follow these steps:
 7. To test your server, navigate to `http://localhost:3001/test` in your browser. You should see the message "It works".
 
 ## MYSQL
-mysql database可匯入的資料檔名是 Dump20240807.sql
-帳號：root
-密碼：queenmary
+mysql database file name : Dump20240807.sql
 
 ## Contact
 

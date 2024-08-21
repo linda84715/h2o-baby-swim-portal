@@ -4,7 +4,7 @@ import { API } from '../../config';
 
 const UserInfo = () => {
   // 定義狀態變數，用於存儲使用者資訊
-  const [user, setUser] = useState({ firstname: '', lastname: '' });
+  const [user, setUser] = useState({ firstname: '', lastname: '', points: 0 });
 
   useEffect(() => {
     // 定義異步函數來獲取使用者資訊
@@ -28,6 +28,7 @@ const UserInfo = () => {
     <div className='user-info'>
       <h2>Member info</h2>
       <p>Member: {user.firstname} {user.lastname} ~</p>
+      <p>Course points: {user.points}</p> {/* 顯示剩餘的課程點數 */}
     </div>
   );
 };

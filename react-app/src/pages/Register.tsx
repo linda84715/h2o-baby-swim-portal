@@ -25,10 +25,14 @@ const Register = () => {
       const res = await axios.post(API.AUTH.REGISTER, inputs);
       console.log(res);
       alert("Your account has been successfully registered!"); // 顯示註冊成功通知
-      navigate("/login"); // 跳轉到 /dashboard
+      navigate("/login"); // 跳轉到 /login
     } catch (err) {
       if (axios.isAxiosError(err)) {
-        console.error("Axios error:", err.response?.data || err.message);
+        if (err.response?.status === 409) {
+          alert("This username or email is already registered."); // 顯示已註冊通知
+        } else {
+          console.error("Axios error:", err.response?.data || err.message);
+        }
       } else {
         console.error("Unexpected error:", err);
       }

@@ -54,7 +54,6 @@ const Navbar = () => {
           <Link className='link' to='/'><h6>About Us</h6></Link>
           {isLoggedIn ? (
             <>
-              <Link className='link' to='/dashboard/book-class'><h6>Booking</h6></Link>
               <Link className='link' to='/dashboard'><h6>Dashboard</h6></Link>
               <Link className='link' to='/myprogress'><h6>My Kid's Progress</h6></Link>
               <span className="write" onClick={handleLogout}><h6>Logout</h6></span>

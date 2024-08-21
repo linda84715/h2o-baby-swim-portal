@@ -1,7 +1,7 @@
 import boykid from '../images/boykid.jpeg';
 import threekids from '../images/threekids.png';
-import awards from '../images/awards.jpeg';
-import couchs from '../images/couchs.png';
+import awards from '../images/babyphoto.jpg';
+import couchs from '../images/awards.jpeg';
 import girlkid from '../images/girlkid.jpeg';
 import fourgirls from '../images/fourgirls.png';
 import Logo from "../images/logo.png"
@@ -42,8 +42,8 @@ const services = [
   {
     imgSrc: facebookLike,
     imgAlt: 'competitiveIcon',
-    title: 'Competitive Training Sessions',
-    description: 'Intensive training sessions for competitive swimmers looking to improve speed, endurance, and race strategies.',
+    title: 'Baby-Dedicated Pools',
+    description: 'Specially designed pools for infants, ensuring a safe and enjoyable swimming environment tailored just for them.',
   },
 ];
 
@@ -53,7 +53,7 @@ const Home = () => {
 
       <div className="news">
             <h2>SWIM & HAVE FUN</h2>
-            <p>Super Fun Baby and Toddler Swimming Lessons | Nurturing Early Swimmers with Professional Care</p>
+            <p>Super Fun Baby and Toddler Swimming Lessons | Fostering Early Swimming Skills with Care</p>
             <p><Link to="/login">Join Now</Link></p>
       </div>
 

@@ -55,13 +55,18 @@ const KidInfo: React.FC = () => {
 
   const handleSave = () => {
     if (editingStudent) {
-      const updatedStudent = {
+      const updatedStudent: Student = {
         ...editingStudent,
-        Birthdate: parseDate(editingStudent.Birthdate)
+        Birthdate: parseDate(editingStudent.Birthdate) // 轉換日期格式
       };
-      axios.put(`${API.USERS.UPDATE_STUDENT}/${editingStudent.StudentID}`, updatedStudent, { withCredentials: true })
+      
+      axios.put(API.USERS.UPDATE_STUDENT(editingStudent.StudentID.toString()), updatedStudent, { withCredentials: true })
         .then(() => {
-          setStudents(students.map(student => student.StudentID === editingStudent.StudentID ? { ...editingStudent, Birthdate: formatDate(editingStudent.Birthdate) } : student));
+          setStudents(students.map(student =>
+            student.StudentID === editingStudent.StudentID ? 
+            { ...editingStudent, Birthdate: formatDate(editingStudent.Birthdate) } 
+            : student
+          ));
           setEditingStudent(null);
         })
         .catch(error => {
@@ -69,7 +74,7 @@ const KidInfo: React.FC = () => {
         });
     }
   };
-
+  
   const handleAdd = () => {
     const newStudentData = {
       ...newStudent,
@@ -139,7 +144,7 @@ const KidInfo: React.FC = () => {
           </div>
         ))
       )}
-      <h3>Add New Student</h3>
+      <h3>Add New Kid / Student</h3>
       <div>
         <label>
           First Name:

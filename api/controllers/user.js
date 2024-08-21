@@ -244,10 +244,10 @@ export const addStudent = (req, res) => {
       // 插入預設進度數據
       const defaultProgress = [
           // Little Fun Time
-          [newStudentId, 1, '2023-07-01', 'Test Coach', 'Test progress feature'],
-          [newStudentId, 2, '2023-07-03', 'Test Coach', 'Test progress feature'],
-          [newStudentId, 3, '2023-07-07', 'Test Coach', 'Test progress feature'],
-          [newStudentId, 4, '2023-07-11', 'Test Coach', 'Test progress feature'],
+          [newStudentId, 1, '2023-07-01', 'Coach Linda', 'Enjoyed the activity'],
+          [newStudentId, 2, '2023-07-03', 'Coach Linda', 'Completed successfully'],
+          [newStudentId, 3, '2023-07-07', 'Coach Sharon', 'Baby is doing great!!'],
+          [newStudentId, 4, '2023-07-11', 'Coach Sharon', 'Very comfortable in water'],
           // Little Floater
           [newStudentId, 5, '2023-07-15', 'Test Coach', 'Test progress feature'],
           [newStudentId, 6, '2023-07-15', 'Test Coach', 'Test progress feature'],

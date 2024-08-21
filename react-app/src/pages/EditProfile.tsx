@@ -63,7 +63,7 @@ const EditProfile: React.FC = () => {
     <div>
       <h2>Edit Profile</h2>
       {editing ? (
-        <div>
+        <div className='edit-profile'>
           <label>
             First Name:
             <input
@@ -114,7 +114,7 @@ const EditProfile: React.FC = () => {
           <button onClick={() => setEditing(false)}>Cancel</button>
         </div>
       ) : (
-        <div>
+        <div className='user-data'>
           <p>First Name: {userProfile.firstname}</p>
           <p>Last Name: {userProfile.lastname}</p>
           <p>Email: {userProfile.email}</p>

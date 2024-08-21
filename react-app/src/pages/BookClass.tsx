@@ -119,7 +119,7 @@ const BookClass: React.FC = () => {
   }
 
   if (courses.length === 0) {
-    return <div>目前沒有可預定的課程</div>;
+    return <div>There are currently no courses available, please contact us</div>;
   }
 
   return (
@@ -145,21 +145,38 @@ const BookClass: React.FC = () => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Select Student"
+        style={{
+          content: {
+            width: '800px',           // 設置寬度
+            height: '300px',            // 根據內容自動調整高度
+            padding: '20px',           // 添加內邊距
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // 陰影效果
+            backgroundColor: '#fff',   // 背景色
+            position: 'relative',
+          },
+          overlay: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',       // 垂直居中
+            position: 'fixed',          // 固定位置
+          },
+          
+        }}
       >
-        <h2>Select a student to book the course</h2>
+        <h2>Select a kid / student to book the course</h2>
         <select
           value={selectedStudent ?? ''}
           onChange={e => setSelectedStudent(Number(e.target.value))}
         >
-          <option value="" disabled>Select a student</option>
+          <option value="" disabled >Select a student</option>
           {students.map(student => (
             <option key={student.StudentID} value={student.StudentID}>
-              {student.StudentID} - {student.FirstName} {student.LastName}
+              {student.FirstName} {student.LastName}
             </option>
           ))}
         </select>
-        <button onClick={bookCourse}>Confirm Booking</button>
-        <button onClick={closeModal}>Cancel</button>
+        <button onClick={bookCourse} style={{ margin: '10px' }}>Confirm Booking</button>
+        <button onClick={closeModal} >Cancel</button>
       </Modal>
     </div>
   );

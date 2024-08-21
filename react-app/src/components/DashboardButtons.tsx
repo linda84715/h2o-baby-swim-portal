@@ -1,12 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const DashboardButtons = () => {
   return (
     <div className="dashboard-buttons">
-      <button><Link to="/dashboard/schedule">My Schedule</Link></button>
-      <button><Link to="/dashboard/book-class">Book Course</Link></button>
-      <button><Link to="/dashboard/edit-profile">Member info</Link></button>
-      <button><Link to="/dashboard/kidinfo">Kid info / Register Kid</Link></button>
+      <Link to="/dashboard/schedule">
+        <button className="button1">My Schedule</button>
+      </Link>
+      <Link to="/dashboard/book-class">
+        <button className="button1">Book Course</button>
+      </Link>
+      <Link to="/dashboard/edit-profile">
+        <button className="button1">Member info</button>
+      </Link>
+      <Link to="/dashboard/kidinfo">
+        <button className="button1">Kid info / Register Kid</button>
+      </Link>
     </div>
   );
 };
